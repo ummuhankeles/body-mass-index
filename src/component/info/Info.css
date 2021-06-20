@@ -1,0 +1,15 @@
+.info {
+    font-family: 'Roboto Mono', monospace;
+    margin-top: 80px;
+}
+
+.info-header {
+    color: #076004;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.info-desc {
+    text-align: justify;
+    font-size: 20px;
+}

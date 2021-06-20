@@ -1,0 +1,23 @@
+.calculate-title {
+    color: #076004;
+}
+
+.calculate-weight {
+    width: 350px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #076004;
+}
+
+.calculate-height {
+    width: 350px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #076004;
+}
+
+.form-btn button {
+    width: 350px;
+    padding: 5px;
+    border-radius: 10px;
+}
