@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../calculate/Calculate.css';
+import { Link } from 'react-router-dom';
 
 function Calculate() {
     const [state, setState] =  useState({
@@ -32,7 +33,9 @@ function Calculate() {
                     <input className="calculate-height" type="number" name="height" onChange={handleChange}></input>
                 </div>
                 <div className="form-btn">
-                    <button type="submit" className="btn btn-outline-success">Hesapla</button>
+                    <Link to="/output">
+                        <button type="submit" className="btn btn-outline-success">Hesapla</button>
+                    </Link>
                 </div>
             </form>
         </div>
