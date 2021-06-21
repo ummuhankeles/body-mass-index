@@ -1,8 +1,22 @@
 import React, { useState } from 'react';
 import '../calculate/Calculate.css';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 function Calculate() {
+    const Button = styled.button`
+        width: 350px;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: #fff;
+        border: 1px solid #079D01;
+        color: #079D01;
+        :hover {
+            background-color: #079D01;
+            color: #fff;
+        }
+    `
+
     const [state, setState] =  useState({
         weight: "",
         height: ""
@@ -34,7 +48,7 @@ function Calculate() {
                 </div>
                 <div className="form-btn">
                     <Link to="/output">
-                        <button type="submit" className="btn btn-outline-success">Hesapla</button>
+                        <Button type="submit">Hesapla</Button>
                     </Link>
                 </div>
             </form>
