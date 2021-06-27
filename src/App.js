@@ -1,21 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Info from "./component/info/Info";
 import Calculate from './component/calculate/Calculate';
-import Home from './component/Home';
 import Output from './component/output/Output';
 
 function App() {
+
+  const database = JSON.parse(localStorage.getItem('user'))
+  const [user, setUser] = useState(database === null ? { bmiData:[] } : database)
+  if(database === null) {
+    localStorage.setItem('user', JSON.stringify({ bmiData:[] }))
+  }
+
   return (
     <div className="container">
       <Router>
         <Switch>
-          <Route exact path="/" component={Home}>
+          <Route exact path="/">
             <Info/>
-            <Calculate/>
+            <Calculate user={user} setUser={setUser}/>
           </Route>
           <Route path="/output" component={Output}>
-            <Output/>
+            <Output data={user} setUser={setUser}/>
           </Route>
         </Switch>
       </Router>

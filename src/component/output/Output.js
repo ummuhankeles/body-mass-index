@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 function Output() {
+
     return (
         <div>
-            Cıktı
+            <h4 className="result">Sonuç:<span></span></h4>
+            
         </div>
     )
 }
