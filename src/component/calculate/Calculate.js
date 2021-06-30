@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../calculate/Calculate.css';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from "prop-types";
 
@@ -25,20 +25,26 @@ const Calculate = ({user,setUser}) => {
     const [result, setResult] = useState({})
 
     function calculate() {
-        let calculated = weight/(height**2/100**2)
-        setBmi(calculated.toFixed(2));
-        if(calculated<18.5){
-            setResult({ad:"Düşük Kilolu",color:"lightblue"})
-        }else if(calculated<24.9){
-            setResult({ad:"Normal Kilolu",color:"green"})
-        }else if(calculated<29.9){
-            setResult({ad:"Fazla Kilolu",color:"gold"})
-        }else if(calculated<34.9){
-            setResult({ad:"1. sınıf Obez",color:"orange"})
-        }else if(calculated<44.9){
-            setResult({ad:"2. sınıf Obez ",color:"orangered"})
-        }else{
-            setResult({ad:"3. sınıf Obez ",color:"firebrick"})
+        if(height == 0 && weight == 0) {
+            alert("Lütfen boy ve kilonuzu giriniz !");
+        } else {
+            let calculated = weight/(height**2/100**2)
+            setBmi(calculated.toFixed(2));
+            if(calculated < 18.5){
+                setResult({name:"Zayıf",color:"lightblue"})
+            }else if(calculated > 18.5 && calculated <= 24.9){
+                setResult({name:"Normal Kilolu",color:"green"})
+            }else if(calculated > 25 && calculated <= 29.9){
+                setResult({name:"Fazla Kilolu",color:"gold"})
+            }else if(calculated > 30 && calculated <= 39.9){
+                setResult({name:"Obez",color:"orange"})
+            }else{
+                setResult({name:"İleri Derecede Obez",color:"orangered"})
+            }
+            let block = document.querySelector('#diet-list');
+            block.style.display = "none" ?
+            block.setAttribute('style', 'display: block; width: 350px; padding: 5px; border-radius: 10px; background-color: #fff; border: 1px solid #C40000; color: #C40000; margin: 0px auto;') : 
+            block.setAttribute('style', 'display: none;');
         }
     }
 
@@ -82,7 +88,17 @@ const Calculate = ({user,setUser}) => {
                     <Button type="submit" onClick={calculate}>Hesapla</Button>
                 </div>
                 <div className="show-result mb-4">
-                    <h5>Result: <span>{bmi}</span></h5>
+                    <h5>Result: <span>{bmi}</span></h5> 
+                    {bmi === 0 ? '' : (
+                        <h6 color={result.color}>{result.name}</h6>
+                    )}
+                </div>
+                <div className="show-diet-lists mb-4">
+                    <Link to="/diet-list">
+                        <button id="diet-list" style={{display: 'none'}}>
+                            Show Receip
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Info from "./component/info/Info";
 import Calculate from './component/calculate/Calculate';
-import Output from './component/output/Output';
+import DietList from './component/dietList/DietList';
 
 function App() {
 
@@ -20,8 +20,8 @@ function App() {
             <Info/>
             <Calculate user={user} setUser={setUser}/>
           </Route>
-          <Route path="/output" component={Output}>
-            <Output data={user} setUser={setUser}/>
+          <Route path="/diet-list" component={DietList}>
+            <DietList data={user} setUser={setUser}/>
           </Route>
         </Switch>
       </Router>
