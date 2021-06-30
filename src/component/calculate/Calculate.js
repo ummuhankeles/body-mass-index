@@ -25,7 +25,7 @@ const Calculate = ({user,setUser}) => {
     const [result, setResult] = useState({})
 
     function calculate() {
-        if(height == 0 && weight == 0) {
+        if(height === 0 && weight === 0) {
             alert("Lütfen boy ve kilonuzu giriniz !");
         } else {
             let calculated = weight/(height**2/100**2)
